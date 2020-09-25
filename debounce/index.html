@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">
+        点击
+    </button>
+    <script>
+      
+        // 防抖
+        function debounce(fn, wait) { 
+            console.log('handle')  
+            var timeout = null; 
+            let a = 1; 
+            return function() {     
+                console.log(a)
+                a++
+                if(timeout !== null)   clearTimeout(timeout);        
+                timeout = setTimeout(fn, wait);
+            }
+        }
+        // 处理函数
+        function handle() {    
+            console.log(Math.random()); 
+        }
+        // 点击事件
+         $('.btn').click(debounce(handle,1000));
+    </script>
+</body>
+</html>
